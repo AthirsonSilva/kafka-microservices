@@ -1,2 +1,16 @@
 server:
     port: 8081
+
+spring:
+  kafka:
+    consumer:
+      bootstrap-servers: localhost:9092
+      group-id: stock
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      auto-offset-reset: earliest # This is required to read the messages from the beginning of the topic
+      properties:
+        spring.json.trusted.packages: '*' # This is required to deserialize the JSON message
+
+    topic:
+      name: order_topics
