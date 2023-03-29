@@ -1,4 +1,4 @@
-package microservices.stock.kafka;
+package microservices.email.kafka;
 
 import microservices.domains.events.OrderEvent;
 import org.slf4j.Logger;
@@ -12,6 +12,6 @@ public class OrderConsumer {
 
     @KafkaListener(topics = "${spring.kafka.topic.name}", groupId = "${spring.kafka.consumer.group-id}")
     public void consume(OrderEvent order) {
-        LOGGER.info(String.format("STOCK SERVICE: Received order event --> %s", order.toString()));
+            LOGGER.info(String.format("EMAIL SERVICE: Received order event --> %s", order.toString()));
     }
 }
